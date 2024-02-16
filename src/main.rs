@@ -1,4 +1,11 @@
-use std::{io::stdin, net::TcpStream, thread::sleep, time::Duration};
+#![allow(unused)]
+
+use std::{
+    io::{stdin, BufRead, BufReader, Read, Write},
+    net::TcpStream,
+    thread::sleep,
+    time::Duration,
+};
 
 mod ascii_codes;
 use crate::ascii_codes::style::*;
@@ -11,11 +18,16 @@ fn main() {
     println!("{DIM}Connect to:{DIM_END}");
     match stdin().read_line(&mut addr) {
         Ok(_) => {}
-        Err(e) => println!("{e}"),
+        Err(e) => {
+            println!("{e}");
+            println!("{BOLD}{BLINK}--- Shut Down ---{BLINK_END}{BOLD_END}");
+            let _ = stdin().read_line(&mut String::new());
+            return;
+        }
     };
     let addr = addr.trim();
 
-    let stream = match TcpStream::connect(addr) {
+    let mut stream = match TcpStream::connect(addr) {
         Ok(tcp_stream) => tcp_stream,
         Err(e) => {
             println!("{e}");
@@ -28,8 +40,17 @@ fn main() {
 
     println!("{DIM}connected! address: {addr}{DIM_END}");
 
-    //
-
+    // logic
+    stream.write(b"Message 1, chunk 1\r");
+    sleep(Duration::from_secs(1));
+    stream.write(b"Message 1, chunk 2\r\n");
+    sleep(Duration::from_secs(1));
+    stream.write(b"Message 2, chunk 1\r");
+    sleep(Duration::from_secs(1));
+    stream.write(b"Message 2, chunk 2\r");
+    sleep(Duration::from_secs(1));
+    stream.write(b"Message 2, chunk 3\r\n");
+    sleep(Duration::from_secs(1));
     //
 
     match stream.shutdown(std::net::Shutdown::Both) {
