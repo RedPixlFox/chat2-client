@@ -36,25 +36,24 @@ pub mod erase {
 }
 
 pub mod color {
-    // B_X sets the background color to color X
-    pub const BLACK: &str = "\x1b[30";
-    pub const B_BLACK: &str = "\x1b[40";
-    pub const RED: &str = "\x1b[31";
-    pub const B_RED: &str = "\x1b[41";
-    pub const GREEN: &str = "\x1b[32";
-    pub const B_GREEN: &str = "\x1b[42";
-    pub const YELLOW: &str = "\x1b[33";
-    pub const B_YELLOW: &str = "\x1b[43";
-    pub const BLUE: &str = "\x1b[34";
-    pub const B_BLUE: &str = "\x1b[44";
-    pub const MAGENTA: &str = "\x1b[35";
-    pub const B_MAGENTA: &str = "\x1b[45";
-    pub const CYAN: &str = "\x1b[36";
-    pub const B_CYAN: &str = "\x1b[46";
-    pub const WHITE: &str = "\x1b[37";
-    pub const B_WHITE: &str = "\x1b[47";
-    pub const DEFAULT: &str = "\x1b[39";
-    pub const B_DEFAULT: &str = "\x1b[49";
-    pub const RESET: &str = "\x1b[0";
-    pub const B_RESET: &str = "\x1b[0";
+    // F -> Foreground
+    // B -> Background
+    pub const F_BLACK: &str = "\x1b[30m";
+    pub const B_BLACK: &str = "\x1b[40m";
+    pub const F_RED: &str = "\x1b[31m";
+    pub const B_RED: &str = "\x1b[41m";
+    pub const F_GREEN: &str = "\x1b[32m";
+    pub const B_GREEN: &str = "\x1b[42m";
+    pub const F_YELLOW: &str = "\x1b[33m";
+    pub const B_YELLOW: &str = "\x1b[43m";
+    pub const F_BLUE: &str = "\x1b[34m";
+    pub const B_BLUE: &str = "\x1b[44m";
+    pub const F_MAGENTA: &str = "\x1b[35m";
+    pub const B_MAGENTA: &str = "\x1b[45m";
+    pub const F_CYAN: &str = "\x1b[36m";
+    pub const B_CYAN: &str = "\x1b[46m";
+    pub const F_WHITE: &str = "\x1b[37m";
+    pub const B_WHITE: &str = "\x1b[47m";
+    pub const F_DEFAULT: &str = "\x1b[39m";
+    pub const B_DEFAULT: &str = "\x1b[49m";
 }
